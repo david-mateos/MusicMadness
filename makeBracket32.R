@@ -1,13 +1,13 @@
 library(dplyr)
 library(graphics)
 
-setwd("/Users/davidmateos/Downloads/TrackTournament")
-source("drawBracketLines.R")
+setwd("/Users/your_dir_here")
+source("drawBracketLines.R") # file must be in wd
 
 all_tracks <- read.csv("bracket_tracks.csv", header = F, stringsAsFactors = F)
 names(all_tracks) <- c("track", "popularity", "artist")
 
-n = 32; q = 4
+n = 32; q = 4 # for artists with not enough tracks for a 64 track bracket
 key_words <- c("Recorded", "Version", "Remix", "Mix", "- Live")
 #to_remove <- " - Remastered 2009" # take out a part of a string
 
