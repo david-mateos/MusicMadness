@@ -15,8 +15,8 @@ from spotipy.oauth2 import SpotifyClientCredentials
 import os
 import csv
 
-os.environ['SPOTIPY_CLIENT_ID'] = '219ee35238aa44cbbc6e3f303a799002'
-os.environ['SPOTIPY_CLIENT_SECRET'] = 'd6ce818e199440dda66d685bb1fd6c8c'
+os.environ['SPOTIPY_CLIENT_ID'] = '' # your credentials
+os.environ['SPOTIPY_CLIENT_SECRET'] = ''
 sp = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials())
 
 def get_tracks(playlist_ids):
@@ -62,7 +62,7 @@ if __name__ == "__main__":
    
    if len(all_tracks) >= 32:
        
-       n = 50
+       n = 50 # spotify only lets us do this 50 tracks at a time
        chunk = [all_tracks[i:i + n] for i in range(0, len(all_tracks), n)]
        
        all_popularities = {}
