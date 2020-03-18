@@ -1,12 +1,13 @@
 library(dplyr)
 library(graphics)
 
-setwd("/Users/davidmateos/Downloads/TrackTournament")
-source("drawBracketLines.R")
+setwd("/Users/your_directory_here")
+source("drawBracketLines.R") #make sure this file is in the wd
 
 all_tracks <- read.csv("bracket_tracks.csv", header = F, stringsAsFactors = F)
 names(all_tracks) <- c("track", "popularity", "artist")
 
+# this file generates a 64 track bracket 
 n = 64; q = 4
 key_words <- c("Recorded", "Version", "Remix", "Mix", "- Live")
 #to_remove <- " - Remastered" # take out a part of a string
@@ -40,12 +41,12 @@ ordered_tracks_TOPRIGHT <- competitive$track[((n/2)+1):((n/q)*3)]
 ordered_tracks_BOTRIGHT <- competitive$track[(((n/q)*3)+1):n]
 
 artists <- data.frame(table(competitive$artist))
-artist <- as.character(artists[order(-artists$Freq),]$Var1[1]) # name of artist
+artist <- as.character(artists[order(-artists$Freq),]$Var1[1]) # name of the artist
 
 
 # Draw and Populate the bracket
 pdf(paste(artist, "_bracket.pdf", sep=""), width = 28, height = 18)  # save and download as this
-drawBracket(n) 
+drawBracket(n)
 for (i in 1:(n/q)){
   # Left Side
   text(0,67-(i*2), ordered_tracks_TOPLEFT[i], cex=1, adj = 0)
