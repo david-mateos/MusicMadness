@@ -7,7 +7,7 @@ After a csv is generated from the playlist id, the r script creates seeds by loo
 
 This is what Drake's bracket looks like starting from the playlist: https://open.spotify.com/playlist/7wBVKvnoeoMFdGfw70qIkR
 
-![alt text](https://github.com/david-mateos/MusicMadness/blob/master/Drake_bracket_sample.pdf?raw=true
+![alt text](https://github.com/david-mateos/MusicMadness/blob/master/Drake_bracket_sample.png?raw=true
 
 This process works for artists who have released at least 3 albums. The makeBracket files each correspond to either a 32 or 64 
 size bracket.
