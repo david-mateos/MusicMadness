@@ -1,4 +1,5 @@
 drawBracket <- function(n){
+  # grid #
   x <- seq(0,220,(221/67))
   y <- 0:66
   if (n==64){
