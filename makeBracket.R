@@ -10,7 +10,7 @@ names(all_tracks) <- c("track", "popularity", "artist")
 # this file generates a 64 track bracket 
 n = 64; q = 4
 key_words <- c("Recorded", "Version", "Remix", "Mix", "- Live")
-#to_remove <- " - Remastered" # take out a part of a string
+#to_remove <- " - Remastered" # use this to take out a part of a string
 
 competitive <- all_tracks %>%
                   mutate(track = as.character(track)) %>%
@@ -31,6 +31,22 @@ A1 <- A[1:(length(A)/2)]
 A2 <- A[((length(A)/2)+1):length(A)]
 B1 <- B[1:(length(B)/2)]
 B2 <- B[((length(B)/2)+1):length(B)]
+
+target_order <- c(1, 2, 5, 6, 9, 10, 13, 14, 15, 16, 11, 12, 7, 8, 3, 4)
+
+df1 <- data.frame(x=A1, target_order=seq(1:length(A1)))
+df1 <- left_join(data.frame(target_order), df1,by="target_order")
+A1 <- df1$x
+df2 <- data.frame(x=A2, target_order=seq(1:length(A2)))
+df2 <- left_join(data.frame(target_order), df2,by="target_order")
+A2 <- df2$x
+
+df3 <- data.frame(x=B1, target_order=seq(1:length(B1)))
+df3 <- left_join(data.frame(target_order), df3,by="target_order")
+B1 <- df3$x
+df4 <- data.frame(x=B2, target_order=seq(1:length(B2)))
+df4 <- left_join(data.frame(target_order), df4,by="target_order")
+B2 <- df4$x
 
 seeds <- c(A1,B1,A2,B2)
 competitive <- competitive[match(seeds, competitive$rank),] # order by exact seed pos.
